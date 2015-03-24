@@ -1,9 +1,10 @@
 # ovl2dot
-Afg overlaps to dot graph converter
+Afg overlaps to dot graph converter.
 
 ## Requirements
 - make
 - gcc
+- graphviz (for plotting part)
 
 ## Installation
 
