@@ -8,7 +8,6 @@ Afg overlaps to dot graph converter
 ## Installation
 
 ```
-  mkdir bin
   make
 ```
 
