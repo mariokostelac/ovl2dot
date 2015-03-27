@@ -1,7 +1,7 @@
 #include <map>
 #include <utility>
 
-template <class K, class V>
+template <typename K, typename V>
 class EdgesSet {
   private:
     std::map<std::pair<K, K>, V> edges;

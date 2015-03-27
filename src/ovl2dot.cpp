@@ -7,7 +7,8 @@
 #include "edges_set.cpp"
 using namespace std;
 
-int dot_graph(ostream& output, EdgesSet<int, AMOS::Overlap*>& edges) {
+template <typename K, typename V>
+int dot_graph(ostream& output, EdgesSet<K, V>& edges) {
   int lines = 0;
 
   output << "digraph overlaps {\n";
@@ -40,11 +41,11 @@ int dot_graph(ostream& output, EdgesSet<int, AMOS::Overlap*>& edges) {
 }
 
 int main() {
-  vector<AMOS::Overlap*> overlaps;
+  vector<const AMOS::Overlap*> overlaps;
   int read = get_overlaps(overlaps, stdin);
   fprintf(stderr, "Read %d overlaps\n", read);
 
-  EdgesSet<int, AMOS::Overlap*> edges;
+  EdgesSet<int, const AMOS::Overlap*> edges;
   for (int i = 0; i < overlaps.size(); ++i) {
     const auto edge = overlaps[i];
     edges.add(edge->read1, edge->read2, edge);

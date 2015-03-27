@@ -8,8 +8,8 @@
 #include <vector>
 
 namespace AMOS {
-  int get_reads(std::vector<Read*>& container, FILE *fd);
-  int get_overlaps(std::vector<Overlap*>& container, FILE *fd);
+  int get_reads(std::vector<const Read*>& container, FILE *fd);
+  int get_overlaps(std::vector<const Overlap*>& container, FILE *fd);
 }
 
 #endif
