@@ -8,21 +8,34 @@
 #include "edges_set.cpp"
 using namespace std;
 
+const string get_edge_style(const bool use_start, const bool use_end) {
+  if (use_start && use_end) {
+    return "box";
+  } else if (use_start) {
+    return "dot";
+  } else if (use_end) {
+    return "odot";
+  }
+
+  return "none";
+}
+
 template <typename K, typename V>
 int dot_graph(ostream& output, EdgesSet<K, V>& edges) {
   int lines = 0;
 
-  output << "digraph overlaps {\n";
+  output << "graph overlaps {\n";
   lines++;
 
   for (auto it = edges.begin(); it != edges.end(); ++it) {
     const auto& overlap = it->second;
 
-    // TODO(mk): draw arrow depending on the real direction
-    output << overlap->read1 << " -> " << overlap->read2;
-    lines++;
+    output << overlap->read1 << " -- " << overlap->read2 << " [";
 
-    output << ";\n";
+    string tail_style = get_edge_style(overlap->use_start(overlap->read1), overlap->use_end(overlap->read1));
+    string head_style = get_edge_style(overlap->use_start(overlap->read2), overlap->use_end(overlap->read2));
+
+    output << "dir=both arrowtail=" << tail_style << " arrowhead=" << head_style << "];" << endl;
     lines++;
   }
 
