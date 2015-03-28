@@ -1,3 +1,4 @@
+#include <cassert>
 #include <cstdio>
 #include <iostream>
 #include <sstream>
@@ -20,15 +21,6 @@ int dot_graph(ostream& output, EdgesSet<K, V>& edges) {
     // TODO(mk): draw arrow depending on the real direction
     output << overlap->read1 << " -> " << overlap->read2;
     lines++;
-
-    // TODO(mk): define a enum for type
-    if (overlap->adjacency == 'N') {
-      output << " [color=green] ";
-      lines++;
-    } else {
-      output << " [color=pink] ";
-      lines++;
-    }
 
     output << ";\n";
     lines++;
